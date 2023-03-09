@@ -4,13 +4,19 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PatientEntry } from "../components/patient-entry";
+import { getAllDiagnosis } from "../services/diagnosis";
 import { getPatient } from "../services/patients";
-import { Gender, type Patient } from "../types";
+import { Diagnose, Gender, type Patient } from "../types";
 
 export function PatientDetailsPage() {
   const { id } = useParams();
+  const [diagnosis, setDiagnosis] = useState<Diagnose[] | null>(null);
   const [patient, setPatient] = useState<Patient | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    getAllDiagnosis().then(setDiagnosis);
+  }, []);
 
   useEffect(() => {
     getPatient(id)
@@ -36,7 +42,7 @@ export function PatientDetailsPage() {
     <Box marginTop={4}>
       {error ? (
         <Alert severity="error">{error}</Alert>
-      ) : !patient ? (
+      ) : !patient || !diagnosis ? (
         <Stack spacing={3}>
           <Skeleton variant="rounded" width={280} height={40} />
           <Stack spacing={2}>
@@ -63,7 +69,11 @@ export function PatientDetailsPage() {
           <Typography variant="h5">Entries</Typography>
           <Box>
             {patient.entries.map((entry) => (
-              <PatientEntry key={entry.id} entry={entry} />
+              <PatientEntry
+                key={entry.id}
+                entry={entry}
+                diagnosis={diagnosis}
+              />
             ))}
           </Box>
         </Stack>

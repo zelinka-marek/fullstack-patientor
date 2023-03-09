@@ -1,8 +1,8 @@
 import { Box, Typography } from "@mui/material";
-import { Entry } from "../types";
+import { Diagnose, Entry } from "../types";
 
-export function PatientEntry(props: { entry: Entry }) {
-  const { entry } = props;
+export function PatientEntry(props: { entry: Entry; diagnosis: Diagnose[] }) {
+  const { entry, diagnosis } = props;
 
   return (
     <Box>
@@ -14,9 +14,17 @@ export function PatientEntry(props: { entry: Entry }) {
       </Typography>
       {entry.diagnosisCodes && (
         <ul>
-          {entry.diagnosisCodes.map((diagnose, index) => (
-            <li key={index}>{diagnose}</li>
-          ))}
+          {entry.diagnosisCodes.map((diagnoseCode, index) => {
+            const diagnose = diagnosis.find(
+              (diagnose) => diagnose.code === diagnoseCode
+            );
+
+            return (
+              <li key={index}>
+                {diagnoseCode} {diagnose?.name}
+              </li>
+            );
+          })}
         </ul>
       )}
     </Box>
