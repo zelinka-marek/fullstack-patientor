@@ -14,6 +14,7 @@ import { createPatient } from "../services/patients";
 import { type Patient, type PatientFormValues } from "../types";
 import { AddPatientModal } from "../components/add-patient-modal";
 import { HealthRatingBar } from "../components/health-rating-bar";
+import { Link } from "react-router-dom";
 
 export function PatientListPage(props: {
   patients: Patient[];
@@ -76,7 +77,9 @@ export function PatientListPage(props: {
         <TableBody>
           {Object.values(patients).map((patient: Patient) => (
             <TableRow key={patient.id}>
-              <TableCell>{patient.name}</TableCell>
+              <TableCell>
+                <Link to={`/patients/${patient.id}`}>{patient.name}</Link>
+              </TableCell>
               <TableCell>{patient.gender}</TableCell>
               <TableCell>{patient.occupation}</TableCell>
               <TableCell>
