@@ -8,6 +8,12 @@ export async function getAllPatients() {
   return data;
 }
 
+export async function getPatient(id: string | undefined) {
+  const { data } = await axios.get<Patient>(`${apiBaseUrl}/patients/${id}`);
+
+  return data;
+}
+
 export async function createPatient(object: PatientFormValues) {
   const { data } = await axios.post<Patient>(`${apiBaseUrl}/patients`, object);
 

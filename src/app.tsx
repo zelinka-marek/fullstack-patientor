@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
 import { apiBaseUrl } from "./constants";
 import { PatientListPage } from "./pages/parient-list";
+import { PatientDetailsPage } from "./pages/patient-details";
 import { getAllPatients } from "./services/patients";
 import { Patient } from "./types";
 
@@ -37,6 +38,7 @@ export function App() {
                 />
               }
             />
+            <Route path="/patients/:id" element={<PatientDetailsPage />} />
           </Routes>
         </Container>
       </Router>
