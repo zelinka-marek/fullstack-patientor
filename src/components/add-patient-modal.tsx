@@ -5,19 +5,19 @@ import {
   DialogTitle,
   Divider,
 } from "@mui/material";
-import { PatientFormValues } from "../types";
+import { type PatientFormValues } from "../types";
 import { AddPatientForm } from "./add-patient-form";
 
 export function AddPatientModal(props: {
-  modalOpen: boolean;
+  open: boolean;
   onClose: () => void;
   onSubmit: (values: PatientFormValues) => void;
   error?: string;
 }) {
-  const { modalOpen, onClose, onSubmit, error } = props;
+  const { open, onClose, onSubmit, error } = props;
 
   return (
-    <Dialog fullWidth={true} open={modalOpen} onClose={() => onClose()}>
+    <Dialog fullWidth open={open} onClose={onClose}>
       <DialogTitle>Add a new patient</DialogTitle>
       <Divider />
       <DialogContent>

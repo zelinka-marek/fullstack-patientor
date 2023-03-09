@@ -11,7 +11,7 @@ import {
 import axios from "axios";
 import { useState } from "react";
 import { createPatient } from "../services/patients";
-import { Patient, PatientFormValues } from "../types";
+import { type Patient, type PatientFormValues } from "../types";
 import { AddPatientModal } from "./add-patient-modal";
 import { HealthRatingBar } from "./health-rating-bar";
 
@@ -87,12 +87,12 @@ export function PatientListPage(props: {
         </TableBody>
       </Table>
       <AddPatientModal
-        modalOpen={modalOpen}
+        open={modalOpen}
         onSubmit={submitNewPatient}
         error={error}
         onClose={closeModal}
       />
-      <Button variant="contained" onClick={() => openModal()}>
+      <Button variant="contained" onClick={openModal}>
         Add New Patient
       </Button>
     </div>

@@ -15,9 +15,9 @@ type GenderOption = {
   label: string;
 };
 
-const genderOptions: GenderOption[] = Object.values(Gender).map((v) => ({
-  value: v,
-  label: v.toString(),
+const genderOptions: GenderOption[] = Object.values(Gender).map((value) => ({
+  value: value,
+  label: value.toString(),
 }));
 
 export function AddPatientForm(props: {
@@ -25,6 +25,7 @@ export function AddPatientForm(props: {
   onSubmit: (values: PatientFormValues) => void;
 }) {
   const { onCancel, onSubmit } = props;
+
   const [name, setName] = useState("");
   const [occupation, setOccupation] = useState("");
   const [ssn, setSsn] = useState("");
