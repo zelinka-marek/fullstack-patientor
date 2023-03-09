@@ -31,42 +31,36 @@ export function PatientDetailsPage() {
       });
   }, [id]);
 
-  if (error) {
-    return (
-      <Box marginTop={4}>
-        <Alert severity="error">{error}</Alert>
-      </Box>
-    );
-  }
-
-  if (!patient) {
-    return (
-      <Stack marginTop={4} spacing={3}>
-        <Skeleton variant="rounded" width={280} height={40} />
-        <Stack spacing={2}>
-          <Skeleton variant="rounded" width={180} height={20} />
-          <Skeleton variant="rounded" width={240} height={20} />
-        </Stack>
-      </Stack>
-    );
-  }
-
   return (
-    <Stack marginTop={4} spacing={3}>
-      <Typography variant="h5" fontWeight={700}>
-        {patient.name}{" "}
-        {patient.gender === Gender.Male ? (
-          <Male />
-        ) : patient.gender === Gender.Female ? (
-          <Female />
-        ) : (
-          <Transgender />
-        )}
-      </Typography>
-      <Box>
-        <Typography>ssn: {patient.ssn}</Typography>
-        <Typography>occupation: {patient.occupation}</Typography>
-      </Box>
-    </Stack>
+    <Box marginTop={4}>
+      {error ? (
+        <Alert severity="error">{error}</Alert>
+      ) : !patient ? (
+        <Stack spacing={3}>
+          <Skeleton variant="rounded" width={280} height={40} />
+          <Stack spacing={2}>
+            <Skeleton variant="rounded" width={180} height={20} />
+            <Skeleton variant="rounded" width={240} height={20} />
+          </Stack>
+        </Stack>
+      ) : (
+        <Stack spacing={3}>
+          <Typography variant="h5" fontWeight={700}>
+            {patient.name}{" "}
+            {patient.gender === Gender.Male ? (
+              <Male />
+            ) : patient.gender === Gender.Female ? (
+              <Female />
+            ) : (
+              <Transgender />
+            )}
+          </Typography>
+          <Box>
+            <Typography>ssn: {patient.ssn}</Typography>
+            <Typography>occupation: {patient.occupation}</Typography>
+          </Box>
+        </Stack>
+      )}
+    </Box>
   );
 }
