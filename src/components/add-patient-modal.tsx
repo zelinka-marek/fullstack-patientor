@@ -5,7 +5,7 @@ import {
   DialogTitle,
   Divider,
 } from "@mui/material";
-import type { PatientFormValues } from "../types";
+import { PatientFormValues } from "../types";
 import { AddPatientForm } from "./add-patient-form";
 
 export const AddPatientModal = (props: {

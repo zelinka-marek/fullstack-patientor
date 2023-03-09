@@ -11,7 +11,7 @@ import {
 import axios from "axios";
 import { useState } from "react";
 import { createPatient } from "../services/patients";
-import type { Patient, PatientFormValues } from "../types";
+import { Patient, PatientFormValues } from "../types";
 import { AddPatientModal } from "./add-patient-modal";
 import { HealthRatingBar } from "./health-rating-bar";
 
