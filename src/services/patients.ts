@@ -1,9 +1,11 @@
 import axios from "axios";
 import { apiBaseUrl } from "../constants";
-import { Patient, PatientFormValues } from "../types";
+import { NonSensitivePatient, Patient, PatientFormValues } from "../types";
 
 export async function getAllPatients() {
-  const { data } = await axios.get<Patient[]>(`${apiBaseUrl}/patients`);
+  const { data } = await axios.get<NonSensitivePatient[]>(
+    `${apiBaseUrl}/patients`
+  );
 
   return data;
 }

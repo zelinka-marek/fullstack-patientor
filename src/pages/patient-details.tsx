@@ -3,6 +3,7 @@ import { Alert, Box, Skeleton, Stack, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { PatientEntry } from "../components/patient-entry";
 import { getPatient } from "../services/patients";
 import { Gender, type Patient } from "../types";
 
@@ -45,7 +46,7 @@ export function PatientDetailsPage() {
         </Stack>
       ) : (
         <Stack spacing={3}>
-          <Typography variant="h5" fontWeight={700}>
+          <Typography variant="h4" fontWeight={700}>
             {patient.name}{" "}
             {patient.gender === Gender.Male ? (
               <Male />
@@ -58,6 +59,12 @@ export function PatientDetailsPage() {
           <Box>
             <Typography>ssn: {patient.ssn}</Typography>
             <Typography>occupation: {patient.occupation}</Typography>
+          </Box>
+          <Typography variant="h5">Entries</Typography>
+          <Box>
+            {patient.entries.map((entry) => (
+              <PatientEntry key={entry.id} entry={entry} />
+            ))}
           </Box>
         </Stack>
       )}

@@ -10,15 +10,15 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
-import { createPatient } from "../services/patients";
-import { type Patient, type PatientFormValues } from "../types";
+import { Link } from "react-router-dom";
 import { AddPatientModal } from "../components/add-patient-modal";
 import { HealthRatingBar } from "../components/health-rating-bar";
-import { Link } from "react-router-dom";
+import { createPatient } from "../services/patients";
+import { NonSensitivePatient, type PatientFormValues } from "../types";
 
 export function PatientListPage(props: {
-  patients: Patient[];
-  setPatients: React.Dispatch<React.SetStateAction<Patient[]>>;
+  patients: NonSensitivePatient[];
+  setPatients: React.Dispatch<React.SetStateAction<NonSensitivePatient[]>>;
 }) {
   const { patients, setPatients } = props;
 
@@ -75,7 +75,7 @@ export function PatientListPage(props: {
           </TableRow>
         </TableHead>
         <TableBody>
-          {Object.values(patients).map((patient: Patient) => (
+          {Object.values(patients).map((patient) => (
             <TableRow key={patient.id}>
               <TableCell>
                 <Link to={`/patients/${patient.id}`}>{patient.name}</Link>

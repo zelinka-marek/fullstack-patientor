@@ -6,10 +6,10 @@ import { apiBaseUrl } from "./constants";
 import { PatientListPage } from "./pages/parient-list";
 import { PatientDetailsPage } from "./pages/patient-details";
 import { getAllPatients } from "./services/patients";
-import { Patient } from "./types";
+import { NonSensitivePatient } from "./types";
 
 export function App() {
-  const [patients, setPatients] = useState<Patient[]>([]);
+  const [patients, setPatients] = useState<NonSensitivePatient[]>([]);
 
   useEffect(() => {
     axios.get(`${apiBaseUrl}/ping`);
