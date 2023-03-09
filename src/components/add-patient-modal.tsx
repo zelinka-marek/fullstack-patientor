@@ -8,12 +8,12 @@ import {
 import { PatientFormValues } from "../types";
 import { AddPatientForm } from "./add-patient-form";
 
-export const AddPatientModal = (props: {
+export function AddPatientModal(props: {
   modalOpen: boolean;
   onClose: () => void;
   onSubmit: (values: PatientFormValues) => void;
   error?: string;
-}) => {
+}) {
   const { modalOpen, onClose, onSubmit, error } = props;
 
   return (
@@ -26,4 +26,4 @@ export const AddPatientModal = (props: {
       </DialogContent>
     </Dialog>
   );
-};
+}
