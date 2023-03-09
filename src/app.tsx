@@ -2,8 +2,8 @@ import { Button, Container, Divider, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
-import { PatientListPage } from "./components/parient-list-page";
 import { apiBaseUrl } from "./constants";
+import { PatientListPage } from "./pages/parient-list";
 import { getAllPatients } from "./services/patients";
 import { Patient } from "./types";
 

@@ -12,8 +12,8 @@ import axios from "axios";
 import { useState } from "react";
 import { createPatient } from "../services/patients";
 import { type Patient, type PatientFormValues } from "../types";
-import { AddPatientModal } from "./add-patient-modal";
-import { HealthRatingBar } from "./health-rating-bar";
+import { AddPatientModal } from "../components/add-patient-modal";
+import { HealthRatingBar } from "../components/health-rating-bar";
 
 export function PatientListPage(props: {
   patients: Patient[];
